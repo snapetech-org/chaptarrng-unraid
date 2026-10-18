@@ -49,12 +49,14 @@ second application build. The template change is not yet published or tested
 through the Unraid Apps upgrade flow, so keep the current installation and its
 backup until that release gate passes. The
 [migration guide](https://github.com/snapetech-org/chaptarrng/blob/main/docs/MIGRATE_FROM_BOOKSHELFNG.md)
-documents the published migration-158 SQLite support and recovery steps.
-ChaptarrNG `main` adds an embedded SQLite migration chain for recognized
-older BookshelfNG schemas, intended for `v0.9.977` after CI and release checks.
-A synthetic v22 fixture passes upgrade, conversion, rollback, and non-mutating
-preview; real older-schema data and the Unraid Apps upgrade/rollback flow are
-not yet validated. New installations should use this ChaptarrNG template.
+documents the published `v0.9.977` migration-158 SQLite support and recovery
+steps. The `.977` converter bundles an embedded SQLite migration chain, but
+its pre-upgrade guard currently rejects source schemas earlier than migration
+14 because they still use `Blacklist`. A version-aware fix is under hosted
+validation for a follow-up release. New installations should use this
+ChaptarrNG template; existing BookshelfNG installs should be upgraded to the
+final `0.4.21.71` release before migration. The old-template upgrade and
+rollback flow through Unraid Community Apps remains untested.
 
 ## Source and support
 
