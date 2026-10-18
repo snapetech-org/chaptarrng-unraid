@@ -58,8 +58,12 @@ embedded older-schema SQLite upgrade path plus one-schema PostgreSQL source
 migration. The `e67f28ed` run found a staging-schema column bug; `8f0bbc29` fixed it,
 but its hosted build then failed because the runner API did not expose
 `VersionLoader`. Commit `50f58223` reads the registered
-`IVersionTableMetaData` service, and exact-head CI is running. This candidate
-is not available as an image. BookshelfNG's
+`IVersionTableMetaData` service, but that run then failed at migration 23
+because an unqualified schema check examined `public.NamingConfig` and skipped
+staging `EbookRenameBooks`. ChaptarrNG commit `e6e9b955` routes unqualified
+PostgreSQL checks through a schema-scoped processor and adds a focused
+regression test; PR #131 is validating that code. This candidate is not
+available as an image. BookshelfNG's
 release-freeze gate is under review in
 [PR #148](https://github.com/snapetech-org/bookshelfng/pull/148). No new
 release, image, package, or compatibility redirect will be published while
