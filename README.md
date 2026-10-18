@@ -53,7 +53,11 @@ documents the published `v0.9.977` migration-158 SQLite support and recovery
 steps. The `.977` converter bundles an embedded SQLite migration chain, but
 its pre-upgrade guard currently rejects source schemas earlier than migration
 14 because they still use `Blacklist`. A version-aware fix is under hosted
-validation for a follow-up release. New installations should use this
+validation for a follow-up release. An isolated Docker image-switch smoke using
+the `.71` BookshelfNG image and ChaptarrNG `.977` converted and rolled back an
+empty v158 database with the same appdata and media/download mounts; the old
+image started again on port 8787. This does not validate the Community Apps
+update flow or populated operator data. New installations should use this
 ChaptarrNG template; existing BookshelfNG installs should be upgraded to the
 final `0.4.21.71` release before migration. The old-template upgrade and
 rollback flow through Unraid Community Apps remains untested.
