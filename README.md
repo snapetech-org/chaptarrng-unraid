@@ -40,6 +40,22 @@ configuration and SeerrNG integration, see the
 [ChaptarrNG README](https://github.com/snapetech-org/chaptarrng#readme) and the
 [SeerrNG Bookshelf backend guide](https://github.com/snapetech-org/seerrng/blob/main/docs/using-seerr/bookshelf-backend.md).
 
+## BookshelfNG migration
+
+Existing BookshelfNG installations have a separate legacy-template handoff in
+progress. The updated BookshelfNG template will install this same standard
+ChaptarrNG image used by fresh installs; there is no compatibility image or
+second application build. The template change is not yet published or tested
+through the Unraid Apps upgrade flow, so keep the current installation and its
+backup until that release gate passes. The
+[migration guide](https://github.com/snapetech-org/chaptarrng/blob/main/docs/MIGRATE_FROM_BOOKSHELFNG.md)
+documents the published migration-158 SQLite support and recovery steps.
+ChaptarrNG `main` adds an embedded SQLite migration chain for recognized
+older BookshelfNG schemas, intended for `v0.9.977` after CI and release checks.
+A synthetic v22 fixture passes upgrade, conversion, rollback, and non-mutating
+preview; real older-schema data and the Unraid Apps upgrade/rollback flow are
+not yet validated. New installations should use this ChaptarrNG template.
+
 ## Source and support
 
 - [ChaptarrNG application source](https://github.com/snapetech-org/chaptarrng)
