@@ -50,24 +50,7 @@ ChaptarrNG image. Its static XML and settings-preservation check passed, but it
 is not published or tested through the Unraid Apps upgrade flow. Keep the
 current installation and an independent backup until those gates pass.
 
-The latest published ChaptarrNG release is `v0.9.977`. It supports migration-
-158 SQLite databases; its pre-upgrade guard rejects older source schemas. The
-unreleased retirement candidate is under review in
-[PR #131](https://github.com/snapetech-org/chaptarrng/pull/131) and adds an
-embedded older-schema SQLite upgrade path plus one-schema PostgreSQL source
-migration. The `e67f28ed` run found a staging-schema column bug; `8f0bbc29` fixed it,
-but its hosted build then failed because the runner API did not expose
-`VersionLoader`. Commit `50f58223` reads the registered
-`IVersionTableMetaData` service, but that run then failed at migration 23
-because an unqualified schema check examined `public.NamingConfig` and skipped
-staging `EbookRenameBooks`. ChaptarrNG commit `e6e9b955` routes unqualified
-PostgreSQL checks through a schema-scoped processor and adds a focused
-regression test; PR #131 is validating that code. This candidate is not
-available as an image. BookshelfNG's
-release-freeze gate is under review in
-[PR #148](https://github.com/snapetech-org/bookshelfng/pull/148). No new
-release, image, package, or compatibility redirect will be published while
-retirement acceptance remains open.
+The latest published ChaptarrNG release is `v0.9.977`. It supports migration-158 SQLite and rejects older source schemas. The unreleased candidate in [PR #131](https://github.com/snapetech-org/chaptarrng/pull/131) adds older-schema SQLite upgrades and one-schema PostgreSQL conversion. The PostgreSQL smoke run [39127070836](https://github.com/snapetech-org/chaptarrng/actions/runs/39127070836) on code head `21c41ad5` failed during application startup before the 300-second readiness limit (DryIoc exception, no NUnit totals). This does not establish a converter assertion failure. Follow PR #131 for current diagnostics. The candidate is not available as an image. BookshelfNG's fail-closed publisher gate merged to `main` as `c6b4642`; its readiness variable remains unset. No release, image, package, or compatibility redirect will be published while retirement acceptance remains open.
 
 An isolated Docker image-switch smoke using BookshelfNG `0.4.21.71` and
 ChaptarrNG `v0.9.977` converted and rolled back an empty v158 database with the
