@@ -50,7 +50,26 @@ ChaptarrNG image. Its static XML and settings-preservation check passed, but it
 is not published or tested through the Unraid Apps upgrade flow. Keep the
 current installation and an independent backup until those gates pass.
 
-The latest published ChaptarrNG release is `v0.9.977`, which supports migration-158 SQLite only. The unreleased older-schema SQLite and one-schema PostgreSQL candidate is in [PR #131](https://github.com/snapetech-org/chaptarrng/pull/131). Run [39132760214](https://github.com/snapetech-org/chaptarrng/actions/runs/39132760214) on `9c051d3d` reported NUnit source line 162 because the fixture queried `BookImportMinimumMatchPercent` with lowercase although it was seeded with its original casing. ChaptarrNG commit [b5bd9527](https://github.com/snapetech-org/chaptarrng/commit/b5bd9527) corrects the three retained-config checks. Exact-head run [39135608892](https://github.com/snapetech-org/chaptarrng/actions/runs/39135608892) on commit [`43bc6363`](https://github.com/snapetech-org/chaptarrng/commit/43bc6363) passed all 4 synthetic PostgreSQL migration cases, including normal-startup conversion with backup retention; Linux, macOS, and Windows platform validation also passed. This is not operator-data acceptance; the candidate remains unsupported for operator data and is not available as an image. BookshelfNG's fail-closed publisher gate merged to `main` as `c6b4642`; its readiness variable remains unset. No release, image, package, or compatibility redirect will be published while retirement acceptance remains open.
+The latest published ChaptarrNG release remains v0.9.977, which accepts
+migration-158 SQLite only. ChaptarrNG PR #131 head 2c0401fc passed exact-head
+run [39196795646](https://github.com/snapetech-org/chaptarrng/actions/runs/39196795646):
+Linux, macOS, and Windows build/tests, the PostgreSQL migration fixtures,
+release-note validation, CodeQL, dependency and secret checks, NuGet
+submission, and runner-receipt reconciliation passed. Disposable-fork
+validation was skipped by its gate. Four Windows fixtures failed in the
+previous run because they used POSIX-only paths; the current native-path
+fixtures pass.
+
+On 2026-10-19, candidate build 0.9.978.0 passed preview, apply, restore
+preview, and rollback on a disposable copy of populated migration-158 SQLite
+data with native Hardcover mode and network access disabled. The source copy
+remained unchanged, rollback restored the retained source backup byte-for-byte,
+and the converted database remained separate. This is copy-only evidence, not
+production approval. Ambiguous media review, older-schema and PostgreSQL
+operator-data acceptance, feature parity, installed rollback, and
+installation-channel acceptance remain open. PR #131 remains draft and the
+Unraid Community Apps transition has not been tested through the Apps upgrade
+flow; keep PR #5 in draft and do not switch existing installs yet.
 
 An isolated Docker image-switch smoke using BookshelfNG `0.4.21.71` and
 ChaptarrNG `v0.9.977` converted and rolled back an empty v158 database with the
