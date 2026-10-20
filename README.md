@@ -85,3 +85,7 @@ accepted migration path and Unraid upgrade/rollback procedure are published.
 - [Unraid package support and SeerrNG integration](https://github.com/snapetech-org/seerrng/issues)
 
 This template repository is distributed under GPLv3; see [LICENSE](LICENSE).
+
+## Local security scanning
+
+Run `./scripts/security-scan-local.sh` to check whether Semgrep or Trivy applies to this repository; both skip the current documentation/package-only content. See [security-scanning.md](docs/security-scanning.md).
