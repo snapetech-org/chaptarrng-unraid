@@ -54,20 +54,18 @@ Unraid handoff are still release-frozen. BookshelfNG `0.4.21.71` and ChaptarrNG
 point ChaptarrNG at its `/config` directory or apply the published `.977`
 converter to BookshelfNG appdata.
 
-The current ChaptarrNG source candidate is
-[`f30dcec8`](https://github.com/snapetech-org/chaptarrng/commit/f30dcec8c882c0169a544eee337f1d628e76e5d4).
+The latest ChaptarrNG source candidate is
+[`6f296ed2`](https://github.com/snapetech-org/chaptarrng/commit/6f296ed20792bdfce7192d12e730bc996818fa3d).
 Exact-head Build
-[`39520269403`](https://github.com/snapetech-org/chaptarrng/actions/runs/39520269403)
-passed Linux, Windows, and macOS build/test jobs, PostgreSQL migration smoke,
-and native-runner receipt reconciliation. Security Analysis, Semgrep CE,
-Trivy, and NuGet submission passed. No CodeQL run is attached to this source
-commit; the release-note contract was skipped on the main push. Local frontend
-tests pass 57/57, and typecheck, translation-key validation, and changed CSS
-lint pass. Current
-source includes a preview/confirm flow for missing author roots, safe profile
-reset controls, local-add edition preservation, numeric Hardcover/Goodreads
-facade lookup, and row-format-aware author editing. It is not in the published
-image. BookshelfNG issue
+[`39660911376`](https://github.com/snapetech-org/chaptarrng/actions/runs/39660911376)
+is queued; hosted validation has not finished. The source restores the migrated
+BookshelfNG numeric threshold in the fuzzy RSS-title fallback. ChaptarrNG's
+separate strictness mode still controls release and file-import matching, whose
+scoring algorithm remains different. The source also includes a
+preview/confirm flow for missing author roots, safe profile reset controls,
+local-add edition preservation, numeric Hardcover/Goodreads facade lookup, and
+row-format-aware author editing. None of this source candidate is in the
+published image. BookshelfNG issue
 [#144](https://github.com/snapetech-org/bookshelfng/issues/144) remains open,
 and the legacy Unraid handoff [PR #5](https://github.com/snapetech-org/bookshelfng-unraid/pull/5)
 is still a draft. Community Applications update/rollback and
