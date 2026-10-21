@@ -58,9 +58,12 @@ The current ChaptarrNG source candidate is
 [`f30dcec8`](https://github.com/snapetech-org/chaptarrng/commit/f30dcec8c882c0169a544eee337f1d628e76e5d4).
 Exact-head Build
 [`39520269403`](https://github.com/snapetech-org/chaptarrng/actions/runs/39520269403)
-is still in progress. Security Analysis, Semgrep CE, Trivy, and NuGet submission passed. No
-CodeQL run is attached to this source commit yet. Local frontend tests pass 57/57, and typecheck, translation-key
-validation, and changed CSS lint pass. Current
+passed Linux, Windows, and macOS build/test jobs, PostgreSQL migration smoke,
+and native-runner receipt reconciliation. Security Analysis, Semgrep CE,
+Trivy, and NuGet submission passed. No CodeQL run is attached to this source
+commit; the release-note contract was skipped on the main push. Local frontend
+tests pass 57/57, and typecheck, translation-key validation, and changed CSS
+lint pass. Current
 source includes a preview/confirm flow for missing author roots, safe profile
 reset controls, local-add edition preservation, numeric Hardcover/Goodreads
 facade lookup, and row-format-aware author editing. It is not in the published
